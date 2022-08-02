@@ -1,5 +1,5 @@
 # calculadora_IMC
-## Uma simples calculadora IMC.
+## Uma simples calculadora de IMC.
 
 - O código gera uma tela contendo dois campos de texto, sendo eles 'peso' e 'altura', e um botão que fará o cálculo do IMC.
 
