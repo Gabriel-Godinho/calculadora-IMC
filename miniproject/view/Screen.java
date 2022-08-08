@@ -64,7 +64,10 @@ public class Screen extends JFrame{
         center.add(high, cons);
 
         south.add(calc);
+        high.addKeyListener(controller);
+        weight.addActionListener(controller);
         calc.addActionListener(controller);
+        calc.addKeyListener(controller);
     }
     
     public Entity getData() throws InvalidValueException{
