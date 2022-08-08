@@ -65,7 +65,7 @@ public class Screen extends JFrame{
 
         south.add(calc);
         high.addKeyListener(controller);
-        weight.addActionListener(controller);
+        weight.addKeyListener(controller);
         calc.addActionListener(controller);
         calc.addKeyListener(controller);
     }
