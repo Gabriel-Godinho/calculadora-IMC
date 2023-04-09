@@ -7,26 +7,37 @@ import java.awt.event.ActionEvent;
 
 import javax.swing.JOptionPane;
 
+import miniproject.entity.Entity;
 import miniproject.exception.InvalidValueException;
-import miniproject.view.CalculateScreen;
+import miniproject.view.ResultScreen;
 import miniproject.view.Screen;
 
-public class ScreenController implements ActionListener, KeyListener{
+public class ScreenController implements ActionListener, KeyListener {
     
-    private Screen sc;
+    private final Screen MAIN_SCREEN;
     
     public ScreenController(Screen sc) {
-        this.sc = sc;
+        this.MAIN_SCREEN = sc;
+    }
+
+    private void showResultScreen() {
+        try {
+            Entity data = MAIN_SCREEN.getData();
+            ResultScreen resultScreen = new ResultScreen(data);
+        } catch (InvalidValueException exception) {
+            JOptionPane.showMessageDialog(null, exception.getMessage(), "Erro!", JOptionPane.ERROR_MESSAGE);
+        }
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        try {
-            var dados = sc.getData();
-            CalculateScreen calculate = new CalculateScreen(dados);
-            calculate.getX();
-        } catch (InvalidValueException exception) {
-            JOptionPane.showMessageDialog(null, exception.getMessage(), "Erro!", JOptionPane.ERROR_MESSAGE);
+        showResultScreen();
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+        if (e.getKeyCode() == KeyEvent.VK_ENTER){
+            showResultScreen();
         }
     }
 
@@ -34,19 +45,6 @@ public class ScreenController implements ActionListener, KeyListener{
     public void keyTyped(KeyEvent e) {}
 
     @Override
-    public void keyPressed(KeyEvent e) {
+    public void keyReleased(KeyEvent e) {}
 
-        if (e.getKeyCode() == KeyEvent.VK_ENTER){
-            try {
-                var dados = sc.getData();
-                CalculateScreen calculate = new CalculateScreen(dados);
-                calculate.getX();
-            } catch (InvalidValueException exception) {
-                JOptionPane.showMessageDialog(null, exception.getMessage(), "Erro!", JOptionPane.ERROR_MESSAGE);
-            }
-        }
-    }
-
-    @Override
-    public void keyReleased(KeyEvent e) {}   
 }

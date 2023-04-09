@@ -1,25 +1,29 @@
 package miniproject.entity;
 
 public class Entity {  
-    private float weight;
-    private float high;
+    private double weight;
+    private double high;
     
-    public float getWeight() {
+    public double getWeight() {
         return weight;
     }
-    public void setWeight(float weight) {
-        if(weight >= 0)
+
+    public void setWeight(double weight) {
+        if (weight >= 0) {
             this.weight = weight;
+        }
     }
     
-    public float getHigh() {
+    public double getHigh() {
         return high;
     }
-    public void setHigh(float high) {
-        if (high > 0 ) {
+
+    public void setHigh(double high) {
+        if (high >= 0 ) {
             this.high = high;
         } else if (high < 0) {
             this.high = 0.0f;
         }
     }
+
 }

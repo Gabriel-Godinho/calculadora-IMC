@@ -74,12 +74,13 @@ public class Screen extends JFrame{
         Entity newEntity = new Entity();
 
         try {
-            newEntity.setHigh(Float.parseFloat(high.getText()));
-            newEntity.setWeight(Float.parseFloat(weight.getText()));
+            newEntity.setHigh(Double.parseDouble(high.getText()));
+            newEntity.setWeight(Double.parseDouble(weight.getText()));
         } catch (NumberFormatException e) {
             throw new InvalidValueException("Erro de conversão! Insira apenas números.");
         }
         
         return newEntity;
     }
+
 }
